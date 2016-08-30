@@ -23,7 +23,7 @@ private ImageView[] icons=new ImageView[3];
         super.onCreate(savedInstanceState);
         SharedPreferences preferences = getSharedPreferences("lead_config", Context.MODE_PRIVATE);
         boolean isFirstRun = preferences.getBoolean("isFirstRun", true);
-        if (isFirstRun) {
+        if (!isFirstRun) {
             startActivity(MainActivity.class);
             finish();
         } else {
@@ -101,5 +101,7 @@ private ImageView[] icons=new ImageView[3];
     public void onClick(View view) {
         // 编辑保存配置信息(不再是第一次运行此引导页面)
         savePreferences();
+        startActivity(MainActivity.class);
+        finish();
     }
 }
