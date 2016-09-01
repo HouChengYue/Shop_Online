@@ -9,15 +9,10 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.ImageLoader;
-
-import java.util.List;
-import java.util.Map;
-
 import hcy.com.shop_online.Base.BaseActivity;
 import hcy.com.shop_online.Base.BasePagerAdapter;
 import hcy.com.shop_online.R;
-import hcy.com.shop_online.Util.VolleyLoadPicture;
+import hcy.com.shop_online.Util.UtilLoder;
 
 public class LeadActivity extends BaseActivity implements OnClickListener {
     private ImageView[] icons = new ImageView[3];
@@ -25,16 +20,12 @@ public class LeadActivity extends BaseActivity implements OnClickListener {
     private TextView tv_skip;
     private ViewPager viewpager;
     private BasePagerAdapter leadPagerAdapter;
-    private VolleyLoadPicture volleyLoadPicture;
-    List<Map<String,Object>> datas;
-    protected ImageLoader imageLoader;
 //    DisplayImageOptions options;
 //http://blog.csdn.net/u013200864/article/details/46831359 Viewpager加载网络图片
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Volly图片加载
-        volleyLoadPicture = new VolleyLoadPicture(this, image);//图片加载
         SharedPreferences preferences = getSharedPreferences("lead_config", Context.MODE_PRIVATE);
         boolean isFirstRun = preferences.getBoolean("isFirstRun", true);
         if (!isFirstRun) {
@@ -52,13 +43,13 @@ public class LeadActivity extends BaseActivity implements OnClickListener {
     private void initPagerData() {
         image = null;
         image = (ImageView) getLayoutInflater().inflate(R.layout.layout_lead_item, null);
-        volleyLoadPicture.getmImageLoader().get("http://192.168.1.114:8080/OkhttpDemoss/category_diaper01.png", volleyLoadPicture.getOne_listener());
+        UtilLoder.ImageLoder(this,"http://192.168.1.103:8080/OkhttpDemoss/image/Lead/Lead_1.png",image);
         leadPagerAdapter.addViewToAdapter(image);
         image = (ImageView) getLayoutInflater().inflate(R.layout.layout_lead_item, null);
-        volleyLoadPicture.getmImageLoader().get("http://192.168.1.114:8080/OkhttpDemoss/category_diaper01.png", volleyLoadPicture.getOne_listener());
+        UtilLoder.ImageLoder(this,"http://192.168.1.103:8080/OkhttpDemoss/image/Lead/Lead_2.png",image);
         leadPagerAdapter.addViewToAdapter(image);
         image = (ImageView) getLayoutInflater().inflate(R.layout.layout_lead_item, null);
-        volleyLoadPicture.getmImageLoader().get("http://192.168.1.114:8080/OkhttpDemoss/category_diaper01.png", volleyLoadPicture.getOne_listener());
+        UtilLoder.ImageLoder(this,"http://192.168.1.103:8080/OkhttpDemoss/image/Lead/Lead_3.png",image);
         leadPagerAdapter.addViewToAdapter(image);
         //刷新适配器
         leadPagerAdapter.notifyDataSetChanged();

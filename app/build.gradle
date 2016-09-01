@@ -23,6 +23,6 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.2.0'
-    compile files('libs/vally-1.0.9.jar')
     compile 'org.webjars.npm:react-imageloader:2.1.0'
+    compile files('libs/picasso-2.5.2.jar')
 }
