@@ -29,7 +29,7 @@ public class LeadActivity extends BaseActivity implements OnClickListener {
         SharedPreferences preferences = getSharedPreferences("lead_config", Context.MODE_PRIVATE);
         boolean isFirstRun = preferences.getBoolean("isFirstRun", true);
         if (!isFirstRun) {
-            startActivity(MainActivity.class);
+            startActivity(LoginActivity.class);
             finish();
         } else {
             setContentView(R.layout.activity_lead);
